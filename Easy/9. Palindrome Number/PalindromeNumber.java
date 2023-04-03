@@ -34,18 +34,21 @@ Constraints:
         return  s.toString().equals(String.valueOf(x)) ? true : false;
     }
 
-    public boolean isNumberPalindrome(int x) {
-    	/* if the number is negative to be palindrome it should end with a '-' and that's impossible
-        or if the number is not 0 and the division by ten has no rest the number ends with a 0 
-        and to be palindrome it should begin with a '0'
+    public boolean isNumberPalindrome(int dividend) {
+    	/* if the number is negative to be palindrome it should end with a '-' or if the number 
+        is not 0 and the division by ten has no rest the number ends with a 0, 
+        to be palindrome it should begin with a '0'
       */
-        if (x<0 || (x!=0 && x%10==0)) return false;
-        int rev = 0;
-        while (x>rev){
-        	rev = rev*10 + x%10;
-        	x = x/10;
+        if (dividend<0 || (dividend!=0 && dividend%10==0)) {
+        	System.out.println(false);
+        	return false;
         }
-        boolean result = (x==rev || x==rev/10);
+        int remainder = 0;
+        while (dividend>remainder){
+        	remainder = remainder*10 + dividend%10;
+        	dividend = dividend/10;
+        }
+        boolean result = (dividend==remainder || dividend==remainder/10);
         System.out.println(result);
         return result;
     }
